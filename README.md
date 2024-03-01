@@ -45,3 +45,5 @@ Si el usuario elige salir (opción 3), el programa termina el bucle y muestra un
 
 7. Bucle del Menú:
 Mientras el usuario no elija salir, el menú se seguirá mostrando después de cada acción, permitiendo al usuario realizar más pedidos o listar los pedidos existentes tantas veces como desee.
+
+En conclusión el sistema de gestión de pedidos de pizza sigue bien los principios SOLID, con cada clase cumpliendo un propósito específico (principio de responsabilidad única) y siendo flexible gracias al uso de interfaces (principios de sustitución de Liskov), lo que facilita añadir nuevas funcionalidades y cambiar componentes sin afectar el código existente. En contraste, la clase Matriz, enfocada en operaciones de matrices, tiene un diseño más simpleque no comparte todos los principios SOLID.
