@@ -1,0 +1,63 @@
+@startuml
+interface IDataBaseManager {
+    +create(data : Object) : void
+    +read(query : String) : Object
+    +update(data : Object) : void
+    +delete(query : String) : void
+}
+
+interface IAuthenticator {
+    +authenticate(username : String, password : String) : boolean
+}
+
+interface IOrderManager {
+    +createOrder(orderDetails : Object) : void
+    +updateOrder(orderDetails : Object) : void
+    +deleteOrder(orderId : String) : void
+}
+
+interface IPaymentProcessor {
+    +processPayment(paymentDetails : Object) : void
+}
+
+class DataBaseManager implements IDataBaseManager {
+    +create(data : Object) : void
+    +read(query : String) : Object
+    +update(data : Object) : void
+    +delete(query : String) : void
+}
+
+class Authenticator implements IAuthenticator {
+    -dbManager : IDataBaseManager
+    +Authenticator(dbManager : IDataBaseManager)
+    +authenticate(username : String, password : String) : boolean
+}
+
+class OrderManager implements IOrderManager {
+    -dbManager : IDataBaseManager
+    +OrderManager(dbManager : IDataBaseManager)
+    +createOrder(orderDetails : Object) : void
+    +updateOrder(orderDetails : Object) : void
+    +deleteOrder(orderId : String) : void
+}
+
+class PaymentProcessor implements IPaymentProcessor {
+    +processPayment(paymentDetails : Object) : void
+}
+
+class PizzaOrderSystem {
+    -orders : List<String>
+    -scanner : Scanner
+    -random : Random
+    +main(args : String[]) : void
+    +realizarPedido() : void
+    +listarPedidos() : void
+}
+
+DataBaseManager ..|> IDataBaseManager
+Authenticator ..|> IAuthenticator
+OrderManager ..|> IOrderManager
+PaymentProcessor ..|> IPaymentProcessor
+Authenticator --> IDataBaseManager : "Uses"
+OrderManager --> IDataBaseManager : "Uses"
+@enduml
